@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
+import socket
 import urllib
 import urllib2
 import tqdm

@@ -32,9 +32,9 @@ class Porn91:
         content = httputil.get_content(video_link)
         url = self.parse_video_url(content)
         title = self.prase_title(content)
-        logging.debug("video title %s download link %s" % (title, url))
-
         title = self.__escape_file_name_str(title)
+
+        logging.debug("video title %s download link %s" % (title, url))
 
         full_file_name = '%s.mp4' % title
 
@@ -61,9 +61,9 @@ class Porn91:
         """
 
         while file_name.find('/') >= 0:
-            file_name.replace('/', '')
+            file_name = file_name.replace('/', '')
 
         while file_name.find('\\') >= 0:
-            file_name.replace('\\', '')
+            file_name = file_name.replace('\\', '')
 
         return file_name
