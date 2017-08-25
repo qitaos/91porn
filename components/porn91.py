@@ -34,6 +34,8 @@ class Porn91:
         title = self.prase_title(content)
         logging.debug("video title %s download link %s" % (title, url))
 
+        title = self.__escape_file_name_str(title)
+
         full_file_name = '%s.mp4' % title
 
         if os.path.exists(full_file_name):
@@ -49,3 +51,19 @@ class Porn91:
 
     def prase_title(self, raw_html):
         return htmlutil.get_text_by_id(raw_html, 'viewvideo-title')
+
+    def __escape_file_name_str(self, file_name):
+        """
+        去除文件名中的特殊字符
+
+        Args:
+            file_name (str): 文件名
+        """
+
+        while file_name.find('/') >= 0:
+            file_name.replace('/', '')
+
+        while file_name.find('\\') >= 0:
+            file_name.replace('\\', '')
+
+        return file_name
